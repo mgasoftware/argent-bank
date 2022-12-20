@@ -1,6 +1,13 @@
-// import { createSlice } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 
-// const userSlice = createSlice({
-//     name: "user",
-//     initialState: [],
-// })
+import loginReducer from './loginSlice';
+import userReducer from './userSlice';
+
+const store = configureStore({
+    reducer: {
+        login: loginReducer,
+        user: userReducer
+    }
+})
+
+export default store;

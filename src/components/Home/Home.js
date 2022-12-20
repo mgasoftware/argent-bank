@@ -14,8 +14,8 @@ export default function Home() {
       <main>
         <Banner />
         <section className="features">
-          {dataFeatures.map((data) => (
-            <Features logo={data.logo} title={data.title} content={data.content} />
+          {dataFeatures.map((data, index) => (
+            <Features key={index} logo={data.logo} title={data.title} content={data.content} />
           ))}
         </section>
       </main>

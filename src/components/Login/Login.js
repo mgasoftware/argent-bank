@@ -1,27 +1,63 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 
 import NavBar from '../Features/NavBar'
 import Footer from '../Features/Footer'
-import axios from 'axios';
+import { loginPending, loginSuccess, loginFail } from '../../redux/loginSlice';
+import { userLogin } from '../../api/userLogin';
+import { useNavigate } from 'react-router';
+import { getUserProfile } from '../../redux/userAction';
 
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [rememberMe, setRememberMe] = useState(false);
 
-    const handleChangeSubmit = (e) => {
+    const dispatch = useDispatch();
+    const { isLoading, isAuth, error } = useSelector(state => state.login);
+    const navigate = useNavigate();
+
+    const handleChangeSubmit = async e => {
         e.preventDefault();
-        axios
-            .post('http://localhost:3001/api/v1/user/login', { email, password })
-            .then((response) => {
-                console.log(response.data)
-                return response.data;
-            })
-            .catch((error) => console.log(error))
-            .finally()
+        if (!email || !password) {
+            alert("Fill the form please !")
+        }
+        else {
+            dispatch(loginPending());
+
+            try {
+                await userLogin({ email, password });
+                dispatch(loginSuccess());
+                dispatch(getUserProfile());
+                navigate("/user");
+            }
+            catch (error) {
+                dispatch(loginFail(error.message))
+            }
+        }
     }
     const handleChangeEmail = (e) => setEmail(e.target.value);
     const handleChangePassword = (e) => setPassword(e.target.value);
+
+    // useEffect(() => {
+    //     debugger
+    //     if (token !== '') {
+    //         axios
+    //             .get("http://localhost:3001/api/v1/user/profile", {
+    //                 headers: {
+    //                     'Authorization': `Bearer ${token}`
+    //                 }
+    //             })
+    //             .then((response) => {
+    //                 setData(response.data);
+    //                 console.log(data);
+    //             })
+    //             .catch((error) => {
+    //                 console.log(error);
+    //             })
+    //             .finally()
+    //     }
+    // }, [token, data])
 
     return (
         <div className="login">
@@ -51,7 +87,9 @@ export default function Login() {
                             <input type="checkbox" id="remember-me" />
                             <label htmlFor="remember-me">Remember me</label>
                         </div>
-                        <button className="sign-in-button">Sign In</button>
+                        {isLoading ? (<button disabled={true} className="sign-in-button">Loading</button>) :
+                            (<button className="sign-in-button">Sign In</button>)
+                        }
                     </form>
                 </section>
             </main>
