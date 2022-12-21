@@ -1,11 +1,11 @@
 import axios from "axios";
 
 const userProfileURL = "http://localhost:3001/api/v1/user/profile";
-const token = sessionStorage.getItem("token");
 
 export const userProfile = () => {
     return new Promise(async (resolve, reject) => {
         try {
+            const token = sessionStorage.getItem("token");
             if(!token) {
                 reject("Token not found!");
             }

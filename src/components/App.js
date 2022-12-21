@@ -5,7 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import store from "../redux/store";
 import Home from "./Home/Home";
 import Login from "./Login/Login";
-import User from "./User/User";
+import Profile from "./Profile/Profile";
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/sign-in" element={<Login />} />
-          <Route path="/user" element={<User />} />
+          <Route path="/user" element={<Profile />} />
         </Routes>
       </div>
     </Provider>

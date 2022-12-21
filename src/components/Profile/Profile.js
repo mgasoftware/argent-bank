@@ -8,7 +8,7 @@ import NavBar from '../Features/NavBar';
 import { getUserProfile } from '../../redux/userAction';
 import { useDispatch } from 'react-redux';
 
-export default function User() {
+export default function Profile() {
     const token = sessionStorage.getItem("token");
 
     if(!token) {

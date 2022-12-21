@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../../styles/Home.css'
+import '../../styles/Home.css';
 import Banner from '../Features/Banner';
 import Features from '../Features/Features';
 import dataFeatures from '../../datas/dataFeatures';

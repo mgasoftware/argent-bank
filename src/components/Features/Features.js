@@ -1,4 +1,6 @@
-import React from 'react'
+import React from 'react';
+
+import '../../styles/Features.css';
 
 export default function Features(props) {
   return (

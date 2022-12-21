@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 
+import '../../styles/Login.css';
 import NavBar from '../Features/NavBar'
 import Footer from '../Features/Footer'
 import { loginPending, loginSuccess, loginFail } from '../../redux/loginSlice';
 import { userLogin } from '../../api/userLogin';
-import { useNavigate } from 'react-router';
+import { Navigate, useNavigate } from 'react-router';
 import { getUserProfile } from '../../redux/userAction';
 
 export default function Login() {
