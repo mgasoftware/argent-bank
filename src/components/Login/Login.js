@@ -32,32 +32,12 @@ export default function Login() {
                 navigate("/user");
             }
             catch (error) {
-                dispatch(loginFail(error.message))
+                dispatch(loginFail(error.response.data.message))
             }
         }
     }
     const handleChangeEmail = (e) => setEmail(e.target.value);
     const handleChangePassword = (e) => setPassword(e.target.value);
-
-    // useEffect(() => {
-    //     debugger
-    //     if (token !== '') {
-    //         axios
-    //             .get("http://localhost:3001/api/v1/user/profile", {
-    //                 headers: {
-    //                     'Authorization': `Bearer ${token}`
-    //                 }
-    //             })
-    //             .then((response) => {
-    //                 setData(response.data);
-    //                 console.log(data);
-    //             })
-    //             .catch((error) => {
-    //                 console.log(error);
-    //             })
-    //             .finally()
-    //     }
-    // }, [token, data])
 
     return (
         <div className="login">

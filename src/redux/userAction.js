@@ -4,9 +4,10 @@ import { userProfile } from "../api/userProfile";
 export const getUserProfile = () => async (dispatch) => {
     try {
         dispatch(getUserPending());
-        const user = await userProfile();
-        console.log(user)
+        const res = await userProfile();
+        dispatch(getUserSuccess(res.body))
     } catch (error) {
-        // dispatch(getUserFail(error));
+        console.log(error)
+        dispatch(getUserFail(error.message));
     }
 }

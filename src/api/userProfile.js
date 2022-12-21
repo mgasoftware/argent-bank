@@ -9,15 +9,15 @@ export const userProfile = () => {
             if(!token) {
                 reject("Token not found!");
             }
+
             const res = await axios.post(userProfileURL, {}, {
                 headers: {
                     "Authorization": `Bearer ${token}`
                 }
-            }).then(res => {return res})
-            console.log(res.data)
+            })
+            
             resolve(res.data);
         } catch (error) {
-            console.log(`Bearer ${token}`);
             reject(error);
         }
     })

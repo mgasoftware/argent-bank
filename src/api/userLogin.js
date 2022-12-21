@@ -1,8 +1,8 @@
 import axios from "axios"
 
-const loginURL = "http://localhost:3001/api/v1/user/login";
-
 export const userLogin = userInfo => {
+    const loginURL = "http://localhost:3001/api/v1/user/login";
+
     return new Promise(async (resolve, reject) => {
         try {
             const res = await axios.post(loginURL, userInfo);
@@ -12,7 +12,6 @@ export const userLogin = userInfo => {
                 sessionStorage.setItem("token", res.data.body.token)
             }
         } catch (error) {
-            console.log(error.message);
             reject(error);
         }
     })
