@@ -32,14 +32,14 @@ export default function NavBar() {
             </NavLink>
             {!isAuth ?
                 (<div>
-                    <NavLink className="main-nav-item" to="/sign-in">
+                    <NavLink className="main-nav-item" to="/login">
                         <i className="fa fa-user-circle"></i>
                         {" "}Sign In
                     </NavLink>
                 </div>) :
                 (
                     <div>
-                        <NavLink className="main-nav-item" to="/user" >
+                        <NavLink className="main-nav-item" to="/profile" >
                             <i className="fa fa-user-circle"></i>
                             {" "}{user.firstName}
                         </NavLink>

@@ -1,27 +1,26 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import Account from '../Features/Account';
 import EditName from '../Features/EditName';
 import Footer from '../Features/Footer';
 import NavBar from '../Features/NavBar';
 
-import { getUserProfile } from '../../redux/userAction';
-import { useDispatch } from 'react-redux';
+import { dataAccount } from '../../datas/dataFeatures';
 
 export default function Profile() {
-    const token = sessionStorage.getItem("token");
-
-    if(!token) {
-        return <h1>ERREUR</h1>
-    }
-
     return (
         <div className="user">
             <NavBar />
             <main className="main bg-dark">
                 <EditName />
                 <h2 className="sr-only">Accounts</h2>
-                <Account />
+                {dataAccount.map((data, index) => (
+                    <Account
+                        key={index}
+                        title={data.title}
+                        amount={data.amount}
+                        description={data.description} />
+                ))}
             </main>
             <Footer />
         </div>
