@@ -2,6 +2,15 @@ import React from 'react';
 
 import '../../styles/Account.css';
 
+/**
+ * 
+ * @param {object} props 
+ * @param {string} props.title
+ * @param {string} props.amount
+ * @param {string} props.description
+ * @returns 
+ */
+
 export default function Account(props) {
     return (
         <section className="account">

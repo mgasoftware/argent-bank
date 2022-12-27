@@ -1,5 +1,13 @@
 import axios from "axios";
 
+/**
+ * 
+ * @param {object} editUserInfo 
+ * @param {string} editUserInfo.firstName
+ * @param {string} editUserInfo.lastName
+ * @returns 
+ */
+
 export const editProfile = (editUserInfo) => {
     const userProfileURL = "http://localhost:3001/api/v1/user/profile";
 

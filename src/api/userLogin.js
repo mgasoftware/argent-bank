@@ -1,5 +1,14 @@
 import axios from "axios"
 
+/**
+ * 
+ * @param {object} userInfo 
+ * @param {string} userInfo.firstName
+ * @param {string} userInfo.lastName
+ * @param {boolean} rememberME 
+ * @returns 
+ */
+
 export const userLogin = (userInfo, rememberME) => {
     const loginURL = "http://localhost:3001/api/v1/user/login";
 

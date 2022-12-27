@@ -2,6 +2,15 @@ import React from 'react';
 
 import '../../styles/Features.css';
 
+/**
+ * 
+ * @param {object} props
+ * @param {string} props.logo
+ * @param {string} props.title 
+ * @param {string} props.content  
+ * @returns 
+ */
+
 export default function Features(props) {
   return (
     <div className="feature-item">
