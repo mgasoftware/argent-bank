@@ -70,7 +70,7 @@ export default function Login() {
                 navigate("/profile");
             }
             catch (error) {
-                dispatch(loginFail(error.response.data.message))
+                dispatch(loginFail(error.message))
             }
         }
     }
