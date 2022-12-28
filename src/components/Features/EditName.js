@@ -22,17 +22,17 @@ export default function EditName() {
 
     const handleClickSave = async e => {
         e.preventDefault();
-        if(!firstName || !lastName){
+        if (!firstName || !lastName) {
             setIsFillForm(true);
         }
-        else{
+        else {
             try {
-                await editProfile({firstName, lastName});
+                await editProfile({ firstName, lastName });
                 dispatch(getUserProfile());
             } catch (error) {
                 console.log(error);
             }
-            finally{
+            finally {
                 setIsEdit(false);
                 setIsFillForm(false);
                 setFirstName('');

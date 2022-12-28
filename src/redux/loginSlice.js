@@ -3,7 +3,6 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     isLoading: false,
     isAuth: false,
-    rememberME: false,
     error: ""
 }
 
@@ -23,9 +22,6 @@ const loginSlice = createSlice({
             state.isLoading = false;
             state.error = payload;
         },
-        loginSave: (state) => {
-            state.rememberME = true;
-        },
         logout: (state) => {
             state.isAuth = false;
             state.rememberME = false;
@@ -34,5 +30,5 @@ const loginSlice = createSlice({
 });
 
 const { reducer, actions } = loginSlice
-export const { loginPending, loginSuccess, loginFail, loginSave , logout } = actions;
+export const { loginPending, loginSuccess, loginFail, logout } = actions;
 export default reducer;

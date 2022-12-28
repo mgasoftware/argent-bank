@@ -5,7 +5,7 @@ import store from "../redux/store";
 import Router from "./Router/Router";
 
 function App() {
-  
+
   return (
     <Provider store={store}>
       <div className="App">

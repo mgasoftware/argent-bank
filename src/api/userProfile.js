@@ -6,10 +6,12 @@ export const userProfile = () => {
     return new Promise(async (resolve, reject) => {
         try {
             let token = sessionStorage.getItem("token");
+
             if (!token) {
                 token = localStorage.getItem("token");
                 if (!token) reject("Token not found!");
             }
+
             const res = await axios.post(userProfileURL, {}, {
                 headers: {
                     "Authorization": `Bearer ${token}`
@@ -17,7 +19,6 @@ export const userProfile = () => {
             })
 
             resolve(res.data);
-
         } catch (error) {
             reject(error);
         }

@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Alert } from 'react-bootstrap';
 
 import '../../styles/Login.css';
 import NavBar from '../Features/NavBar'
 import Footer from '../Features/Footer'
-import { loginPending, loginSuccess, loginFail, loginSave } from '../../redux/loginSlice';
+import { loginPending, loginSuccess, loginFail } from '../../redux/loginSlice';
 import { userLogin } from '../../api/userLogin';
 import { useNavigate } from 'react-router';
 import { getUserProfile } from '../../redux/userAction';
@@ -15,10 +15,21 @@ export default function Login() {
     const [password, setPassword] = useState('');
     const [rememberMe, setRememberMe] = useState(false);
     const [isFillForm, setIsFillForm] = useState(false);
+    const token = localStorage.getItem("token");
 
     const dispatch = useDispatch();
     const { isLoading, error } = useSelector(state => state.login);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (token !== null) {
+            setRememberMe(true);
+        }
+        else {
+            setRememberMe(false);
+        }
+    }, [token])
+
 
     const handleOnChange = e => {
         const { name, value } = e.target;
@@ -33,7 +44,7 @@ export default function Login() {
                 break;
 
             case "checkbox":
-                setRememberMe(value);
+                setRememberMe(!rememberMe);
                 break;
 
             default:
@@ -53,8 +64,8 @@ export default function Login() {
                 await userLogin({ email, password }, rememberMe);
                 dispatch(loginSuccess());
                 dispatch(getUserProfile());
-                if (rememberMe === true) {
-                    dispatch(loginSave())
+                if (rememberMe === false) {
+                    localStorage.removeItem("token");
                 }
                 navigate("/profile");
             }
@@ -95,6 +106,7 @@ export default function Login() {
                                 name="checkbox"
                                 type="checkbox"
                                 id="remember-me"
+                                checked={rememberMe}
                                 onChange={handleOnChange} />
                             <label htmlFor="remember-me">Remember me</label>
                         </div>
