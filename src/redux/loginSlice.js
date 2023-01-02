@@ -24,7 +24,6 @@ const loginSlice = createSlice({
         },
         logout: (state) => {
             state.isAuth = false;
-            state.rememberME = false;
         }
     }
 });
