@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Alert } from 'react-bootstrap';
 
 import '../../styles/Login.css';
-import NavBar from '../Features/NavBar'
-import Footer from '../Features/Footer'
+import NavBar from '../Features/NavBar';
+import Footer from '../Features/Footer';
 import { loginPending, loginSuccess, loginFail } from '../../redux/loginSlice';
 import { userLogin } from '../../api/userLogin';
 import { useNavigate } from 'react-router';
@@ -70,7 +70,7 @@ export default function Login() {
                 navigate("/profile");
             }
             catch (error) {
-                dispatch(loginFail(error.message))
+                dispatch(loginFail(error.response.data.message));
             }
         }
     }

@@ -7,7 +7,7 @@ export const getUserProfile = () => async (dispatch) => {
         const res = await userProfile();
         dispatch(getUserSuccess(res.body))
     } catch (error) {
-        console.log(error)
+        console.log(error);
         dispatch(getUserFail(error.message));
     }
 }

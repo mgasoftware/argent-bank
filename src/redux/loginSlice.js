@@ -28,6 +28,6 @@ const loginSlice = createSlice({
     }
 });
 
-const { reducer, actions } = loginSlice
+const { reducer, actions } = loginSlice;
 export const { loginPending, loginSuccess, loginFail, logout } = actions;
 export default reducer;
